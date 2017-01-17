@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
+    android:background="@color/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -12,6 +13,7 @@
 
     <TextView
         android:text="What are your interests?"
+        android:textColor="@color/colorPrimaryLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
@@ -20,7 +22,9 @@
         android:id="@+id/hobbyText"
         android:contentDescription="Choose your interests!"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        tools:fontFamily="sans-serif" />
+        tools:fontFamily="sans-serif"
+        android:textSize="25dp"
+        />
 
     <LinearLayout
         android:orientation="vertical"
@@ -37,7 +41,10 @@
             android:id="@+id/foodButton"
             android:contentDescription="Food"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:elevation="0dp" />
+            android:elevation="0dp"
+            android:background="@color/colorRed"
+            android:padding="15dp"
+            android:layout_marginBottom="10dp" />
 
         <Button
             android:text="Hiking"
@@ -45,7 +52,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/hikingButton"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:contentDescription="Hiking" />
+            android:contentDescription="Hiking"
+            android:background="@color/colorOrange"
+            android:padding="15dp"
+            android:layout_marginBottom="10dp" />
 
         <Button
             android:text="Movie"
@@ -53,6 +63,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/movieButton"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:contentDescription="Movie" />
+            android:contentDescription="Movie"
+            android:padding="15dp"
+            android:background="@color/colorYellow"
+            android:layout_marginBottom="10dp" />
     </LinearLayout>
 </RelativeLayout>
