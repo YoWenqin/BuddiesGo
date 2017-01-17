@@ -10,4 +10,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sqh.buddiesgo.BuddiesActivity">
 
+    <Button
+        android:text="Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/GetLoc" />
+    <ListView
+        android:layout_below="@id/GetLoc"
+        android:id="@+id/budList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
 </RelativeLayout>
