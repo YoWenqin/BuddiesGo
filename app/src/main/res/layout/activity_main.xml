@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:background="@color/colorBackground"
@@ -11,28 +12,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sqh.buddiesgo.MainActivity">
 
-    <TextView
-        android:text="What are your interests?"
-        android:textColor="@color/colorPrimaryLight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:id="@+id/hobbyText"
-        android:contentDescription="Choose your interests!"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
-        tools:fontFamily="sans-serif"
-        android:textSize="25dp"
-        />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="28dp"
         android:layout_below="@+id/hobbyText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp">
+        android:layout_alignParentBottom="true">
 
         <Button
             android:text="Food"
@@ -43,8 +29,8 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:elevation="0dp"
             android:background="@color/colorRed"
-            android:padding="15dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:padding="10dp" />
 
         <Button
             android:text="Hiking"
@@ -54,7 +40,7 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:contentDescription="Hiking"
             android:background="@color/colorOrange"
-            android:padding="15dp"
+            android:padding="10dp"
             android:layout_marginBottom="10dp" />
 
         <Button
@@ -64,8 +50,24 @@
             android:id="@+id/movieButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:contentDescription="Movie"
-            android:padding="15dp"
             android:background="@color/colorYellow"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:padding="10dp" />
+
     </LinearLayout>
+
+    <TextView
+        android:text="What are your interests?"
+        android:textColor="@color/colorPrimaryLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:id="@+id/hobbyText"
+        android:contentDescription="Choose your interests!"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        tools:fontFamily="sans-serif"
+        android:textSize="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

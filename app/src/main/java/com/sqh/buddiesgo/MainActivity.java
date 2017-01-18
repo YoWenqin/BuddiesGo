@@ -1,5 +1,6 @@
 package com.sqh.buddiesgo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Perform action on click
                 // Call food buddy page
+                startActivity(new Intent(MainActivity.this, BuddiesActivity.class));
             }
         });
 
