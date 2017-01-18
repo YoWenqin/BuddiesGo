@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2b410ae1fda134f470276365f4b7f846269e0d23">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-common-10.0.0_2b44fbfe681942bd32ef08e2bef843b2077da49e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -30,12 +39,147 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a383a583c346ce8ea5767d77f4fe58e1d8e5f221">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-10.0.0_b88efde4a579a20fefa5cf5beff9819b31cf0755/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-clearcut/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fb0229499e600b485a276d4e31161a3ae31c144c">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-clearcut-10.0.0_18ea998044d75aa2c1713e7492d8087a02ce4fc2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a17f819f11b6dae54bd6eeb19b622b967f010b79">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c099bc357d5e7dd31495e21df16f53048548963f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gass/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ae809d521d9f7da5337a82edd64eea23a76e788d">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gass-10.0.0_cbe628b294e91b38a34b9a1da5b83cb0cb0eef36/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.0_477573c7452e50e7e72615f16b7b5f8901957726/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="75dbc3537bc912d077b3db2f5ac72d5b43644b2c">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-10.0.0_f12de9a02319a400e3fd170183af4ea6b608d603/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.0_81b6db7f7abf5721c202775aac1c967b378dcb5c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="985be85104f6d0c5c5e51e7b7e60d8883a98ac64">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-10.0.0_778266a7ebebab9402fb0cd60410063235e76dbf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3a05b3852a6aec21ea0a6ea4d284ee69c04c55c4">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-connection-10.0.0_cec56cc3becebc31f7ccd66fb4f0266eae3e2c85/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.0_843a6f31b3eb0e397396813f7673864061f36c90/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3347c3e7056fabc88bdbd8fdae65ddf2b674d977">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-10.0.0_e4df7b4ac977ac3bc2a6b45a7cc858df72afa1ce/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ce6e6e59212db0893fc36e5b579cf319a84aade8">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-10.0.0_334e885a61dc0645bd765cec668419ea5c789840/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="444a220fadbdf260b3aa47c6e858c5d1e645170f">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-messaging-10.0.0_ed60c6dcb03fe55ab4a96ebb23d76dcfa58608b9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
         <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.0_d66b3d84d2b8306c03106ce3e2ac0e84c13ad020/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a61005619e43f203768ff3f224137def6f029e50">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-iid-10.0.0_c3baec1a06e9e727aa2361a1ac1c4f3c8a27762c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-appindexing/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="22031b047b12904b888549ba36c0c30d83b1aea1">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-appindexing-10.0.0_41ebdb7715cbb24f7581a5f08d3e5b7326ed1b09/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -48,12 +192,30 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.0.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="5c220a9abd88fbfa6b8b0defa6dee1f6ce56f257">
-        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c099bc357d5e7dd31495e21df16f53048548963f/classes.dex" />
+        sha1="c7ed3fd9d5a9687980dac6c504abd91ad3dfa238">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-10.0.0_46b83406324e1f6110d963c97bed49c8071b4742/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads-lite/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="849da156edbc1201f5cd6e237524187442a62af3">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-lite-10.0.0_80f1be9b91b90e548725465fa45e47f9181184b5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-config/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca730ac2d72056445bf68998cec6b6b2cf4d179e">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-config-10.0.0_9a16865113bdcf673a42ff17a0b14d1e42111c0b/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -61,17 +223,35 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="cad8f10bc1b6461e1c3acf8d33742b9eca3ee4fe">
+        sha1="200b356510d2118e0ad44f291393179ce41afacc">
         <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_25ff1444fd0bfbbbc613eabf72aac366f9e3d449/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.firebaseui/firebase-ui-database/0.4.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.0_477573c7452e50e7e72615f16b7b5f8901957726/classes.dex" />
+        sha1="c76f6507a42aec274953e882bf3c49a570843ef5">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.firebaseui-firebase-ui-database-0.4.0_1fcfefdce46c48141e98fb59f51280a6d5d06802/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="73fe8ab7f76e41d0cabbc4fa3399557de52efb2d">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-10.0.0_9eef8da7cd50b7347408b22acc458fc3a6d765bd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-crash/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="777627dcaf0eaacd4212220e8f2d0c63def91774">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-crash-10.0.0_1f662c2b2e65493f130f5774b1ee06704e556dd8/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -93,21 +273,48 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.0_81b6db7f7abf5721c202775aac1c967b378dcb5c/classes.dex" />
+        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.2.1_8d4016ea0dcc2abce52f93322757a841b0f17465/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/10.0.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.0_843a6f31b3eb0e397396813f7673864061f36c90/classes.dex" />
+        sha1="41e39c7ee84e63ae18df6c6ccb96d196996add4c">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-10.0.0_b665c4624982e9067d371b4db3647e2b53f5388c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c2376d0ec8dbe85d3446cad64905c0395fbe220e">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-base-10.0.0_a54aef23e44ef6448cea3a8822687f727d0dc2ea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="73a2c740a76aa4ba46168ed8bcdee1966e48a589">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-10.0.0_cd11ac5f54aa8a37e36c8e1a6c730f4cacfdd92b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/10.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8bb364f67ec2eba2356872b2b4ddfe8aada2d5ac">
+        <dex dex="/Users/demouser/Downloads/BuddiesGo/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-10.0.0_a5c177d824ab2d79d62122c0cec583e47f6ec9f5/classes.dex" />
     </item>
 
 </items>

@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "852264344705-s5g61m44ks56slsf3inf826g5qt384aq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sqh.buddiesgo",
+            "certificate_hash": "E528EE2262D3FFEBA0A1903144C126712EEF086C"
+          }
+        },
+        {
+          "client_id": "852264344705-n3iljdclcr9kpc3128m4tfj22npqe5a1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sqh.buddiesgo",
+            "certificate_hash": "D37B960F18542C75E4112AB78FC790C4A0851849"
+          }
+        },
+        {
           "client_id": "852264344705-kq5l90t7o0imdnacduobhq189bnb7j0b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
