@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.gms.auth.api.Auth;
@@ -15,6 +16,8 @@ import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
+    // GPS
+    GPSTracker gps;
 
     private GoogleApiClient mGoogleApiClient;
 
@@ -52,9 +55,8 @@ public class MainActivity extends AppCompatActivity {
         final Button foodButton = (Button) findViewById(R.id.foodButton);
         foodButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                // Perform action on click
-                // Call food buddy page
-                newAct("food");
+                gps = new GPSTracker(MainActivity.this);
+                newAct("Food", getLocation(gps));
                 //startActivity(new Intent(MainActivity.this, BuddiesActivity.class));
             }
         });
@@ -62,19 +64,35 @@ public class MainActivity extends AppCompatActivity {
         final Button hikingButton = (Button) findViewById(R.id.hikingButton);
         hikingButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                // Call hiking buddy page
-                newAct("hiking");
+                gps = new GPSTracker(MainActivity.this);
+                newAct("Hiking", getLocation(gps));
+
             }
         });
 
         final Button movieButton = (Button) findViewById(R.id.movieButton);
         movieButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                // Call movie buddy page
-                newAct("movie");
+                gps = new GPSTracker(MainActivity.this);
+                newAct("Movie", getLocation(gps));
             }
         });
 
+    }
+
+    public double[] getLocation(GPSTracker gps) {
+        double[] location = new double[2];
+        if (gps.canGetLocation()){
+            double latitude = gps.getLatitude();
+            location[0] = latitude;
+            double longitude = gps.getLongitude();
+            location[1] = longitude;
+            Log.d("lat",Double.toString(latitude));
+            Log.d("longi",Double.toString(longitude));
+        } else {
+            gps.showSettingsAlert();
+        }
+        return location;
     }
 
     @Override
@@ -90,11 +108,19 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    private void newAct(String interest){
+
+    /**
+     * Creates different intents based on interest selection
+     * @param interest user's interest
+     * @param location gps location in latitude and longitude
+     */
+    private void newAct(String interest, double[] location){
         Intent intent = new Intent(MainActivity.this, BuddiesActivity.class);
         Bundle b = new Bundle();
-        b.putString("interest",interest ); //Your id
-        intent.putExtras(b); //Put your id to your next Intent
+        b.putString("interest", interest);
+        b.putDouble("latitude", location[0]);
+        b.putDouble("longitude", location[1]);
+        intent.putExtras(b);
         startActivity(intent);
         finish();
 
