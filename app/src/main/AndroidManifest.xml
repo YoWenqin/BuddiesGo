@@ -17,6 +17,7 @@
         </activity>
 
         <activity android:name=".SignInActivity"></activity>
+        <activity android:name=".BuddiesActivity"></activity>
 
     </application>
 
