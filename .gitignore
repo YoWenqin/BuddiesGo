@@ -26,3 +26,6 @@ proguard-rules.pro
 /captures
 
 .gradle/*
+
+=======
+.gradle/*
