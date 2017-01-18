@@ -25,6 +25,7 @@ proguard-rules.pro
 /build
 /captures
 
+<<<<<<< HEAD
 .gradle/**.class
 
 # Mobile Tools for Java (J2ME)
@@ -54,3 +55,6 @@ proguard-rules.pro
 
 .gradle/*
 
+=======
+.gradle/*
+>>>>>>> upstream/master
