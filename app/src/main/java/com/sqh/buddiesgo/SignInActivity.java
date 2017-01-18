@@ -51,7 +51,6 @@ public class SignInActivity extends AppCompatActivity implements
     private GoogleApiClient mGoogleApiClient;
 
     // Firebase instance variables
-
     private FirebaseAuth mFirebaseAuth;
 
     @Override
