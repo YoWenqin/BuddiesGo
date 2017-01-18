@@ -24,3 +24,5 @@ proguard-rules.pro
 .DS_Store
 /build
 /captures
+
+.gradle/*
