@@ -8,20 +8,34 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorBackground"
     tools:context="com.sqh.buddiesgo.BuddiesActivity">
 
-    <Button
-        android:text="Find Buddies"
+    <TextView
+        android:text="put location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/showLocation"
+        android:textColor="@color/colorPrimaryLight"
+        android:contentDescription="Location"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/GetLoc" />
+        android:layout_marginTop="15dp" />
+
     <ListView
-        android:layout_below="@id/GetLoc"
+        android:layout_below="@id/showLocation"
         android:id="@+id/budList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:text="display interest"
+        android:textColor="@color/colorPrimaryLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/displayInterest" />
 
 
-    </ListView>
 </RelativeLayout>
