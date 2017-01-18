@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Perform action on click
                 // Call food buddy page
+                startActivity(new Intent(MainActivity.this, BuddiesActivity.class));
             }
         });
 
