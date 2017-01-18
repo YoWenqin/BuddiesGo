@@ -26,7 +26,7 @@ public class BuddiesActivity extends AppCompatActivity {
                 gps = new GPSTracker(BuddiesActivity.this);
 
                 // check if GPS enabled
-                if(gps.canGetLocation()){
+                if (gps.canGetLocation()){
                     double lati = gps.getLatitude();
                     double longi = gps.getLongitude();
                     Log.d("lat",Double.toString(lati));
@@ -35,7 +35,9 @@ public class BuddiesActivity extends AppCompatActivity {
                 // can't get location
                     // GPS or Network is not enabled
                     // Ask user to enable GPS/network in settings
-                }else{gps.showSettingsAlert();}
+                } else {
+                    gps.showSettingsAlert();
+                }
 
             }
         });
