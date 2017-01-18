@@ -8,6 +8,9 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import android.view.View;
+import android.widget.Button;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         // Set default username is anonymous.
@@ -41,6 +45,30 @@ public class MainActivity extends AppCompatActivity {
                 mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
             }
         }
+
+        // Creates event listeners for home page buttons
+        final Button foodButton = (Button) findViewById(R.id.foodButton);
+        foodButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                // Perform action on click
+                // Call food buddy page
+            }
+        });
+
+        final Button hikingButton = (Button) findViewById(R.id.hikingButton);
+        hikingButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                // Call hiking buddy page
+            }
+        });
+
+        final Button movieButton = (Button) findViewById(R.id.movieButton);
+        movieButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                // Call movie buddy page
+            }
+        });
+
     }
 
     @Override
