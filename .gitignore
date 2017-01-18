@@ -27,5 +27,5 @@ proguard-rules.pro
 
 .gradle/*
 
-=======
-.gradle/*
+google-services.json
+

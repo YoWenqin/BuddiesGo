@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Perform action on click
                 // Call food buddy page
-                startActivity(new Intent(MainActivity.this, BuddiesActivity.class));
+                newAct("food");
+                //startActivity(new Intent(MainActivity.this, BuddiesActivity.class));
             }
         });
 
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         hikingButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // Call hiking buddy page
+                newAct("hiking");
             }
         });
 
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         movieButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // Call movie buddy page
+                newAct("movie");
             }
         });
 
@@ -87,5 +90,13 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    private void newAct(String interest){
+        Intent intent = new Intent(MainActivity.this, BuddiesActivity.class);
+        Bundle b = new Bundle();
+        b.putString("interest",interest ); //Your id
+        intent.putExtras(b); //Put your id to your next Intent
+        startActivity(intent);
+        finish();
 
+    }
 }
