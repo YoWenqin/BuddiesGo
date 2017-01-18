@@ -12,3 +12,20 @@
 hs_err_pid*
 
 .idea
+
+*.iml
+app/*.iml
+.idea/*
+proguard-rules.pro
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+
+.gradle/*
+
+=======
+.gradle/*
