@@ -208,4 +208,5 @@ public class BuddiesActivity extends AppCompatActivity {
         }
     }
 
+
 }
