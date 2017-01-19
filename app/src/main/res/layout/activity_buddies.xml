@@ -23,6 +23,7 @@
         android:layout_marginTop="15dp" />
 
     <ListView
+        android:layout_marginTop="10dp"
         android:layout_below="@id/showLocation"
         android:id="@+id/budList"
         android:layout_width="match_parent"
