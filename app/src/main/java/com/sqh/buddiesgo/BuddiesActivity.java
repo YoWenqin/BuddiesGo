@@ -33,11 +33,12 @@ public class BuddiesActivity extends AppCompatActivity {
     ArrayList<String> names = new ArrayList<String>();
     ArrayList<String> distances = new ArrayList<String>();
     private String interest;
-    private double latitude;
-    private double longitude;
+    private double lati;
+    private double longi;
     private String memail;
     private String username;
     private ListView mBuddyView;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +48,13 @@ public class BuddiesActivity extends AppCompatActivity {
         // To get the information of the user
         TextView showLocationView = (TextView) findViewById(R.id.showLocation);
         Bundle b = getIntent().getExtras();
-        latitude = b.getDouble("latitude");
-        longitude = b.getDouble("longitude");
+        lati = b.getDouble("latitude");
+        longi = b.getDouble("longitude");
         memail = b.getString("email");
         username = b.getString("username");
-        showLocationView.setText(Double.toString(latitude) + ", " + Double.toString(longitude));
+
+        user = new User(username,memail,lati,longi);
+        showLocationView.setText(Double.toString(lati) + ", " + Double.toString(longi));
 
         // Display title of interest
         changeInterestName();
@@ -60,7 +63,7 @@ public class BuddiesActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // add user information to firebase
-        writeNewUser(username,memail,latitude,longitude);
+        //writeNewUser(username,memail,lati,longitude);
 
         //Initialize Views
         mBuddyView = (ListView) findViewById(R.id.budList);
@@ -81,19 +84,24 @@ public class BuddiesActivity extends AppCompatActivity {
                 distances = new ArrayList<String>();
 
                 DataSnapshot children = dataSnapshot.child(interest);
+                if(children.hasChild(username)){
+                    mDatabase.child(interest).child(username).setValue(user);
+                }else{
+                    writeNewUser(user);
+                }
                 for (DataSnapshot postSnapshot: children.getChildren()) {
                     User buddy = postSnapshot.getValue(User.class);
-                    if (buddy.distance(latitude,longitude)<3 && !buddy.getEmail().equals(memail)){
+                    if (buddy.distance(lati,longi)<3 && !buddy.getEmail().equals(memail)){
                         names.add(buddy.getUsername());
-                        double distance = buddy.distance(latitude,longitude);
+                        double distance = buddy.distance(lati,longi);
                         DecimalFormat df = new DecimalFormat("#.####");
                         distances.add(df.format(distance));
-
                     }
                 }
 
                 // [START_EXCLUDE]
                 // Update buddies View
+
                 mBuddyView.setAdapter(new mAdapter(names, distances));
 
                 // [END_EXCLUDE]
@@ -114,11 +122,10 @@ public class BuddiesActivity extends AppCompatActivity {
 
     }
 
-    private void writeNewUser( String name, String email, Double lati, Double longi) {
-        User user = new User(name, email, lati, longi);
-        String key = mDatabase.child(interest).push().getKey();
+    private void writeNewUser( User user) {
+        //String key = mDatabase.child(interest).push().getKey();
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/" + interest + "/" + key, user);
+        childUpdates.put("/" + interest + "/" + user.getUsername(), user);
         mDatabase.updateChildren(childUpdates);
     }
 
