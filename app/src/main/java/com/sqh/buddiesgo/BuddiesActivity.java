@@ -19,14 +19,19 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class BuddiesActivity extends AppCompatActivity {
     private static final String TAG = "BuddiesActivity";
@@ -34,6 +39,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
     ArrayList<String> names = new ArrayList<String>();
     ArrayList<String> distances = new ArrayList<String>();
+    ArrayList<User> buddies = new ArrayList<User>();
     private String interest;
     private double lati;
     private double longi;
@@ -65,8 +71,7 @@ public class BuddiesActivity extends AppCompatActivity {
         memail = b.getString("email");
         username = b.getString("username");
 
-
-        user = new User(username,memail,lati,longi);
+        user = new User(username,memail,lati,longi) ;
         //showLocationView.setText(Double.toString(lati) + ", " + Double.toString(longi));
         //showLocationView.setText(Double.toString(latitude) + ", " + Double.toString(longitude));
 
@@ -96,6 +101,7 @@ public class BuddiesActivity extends AppCompatActivity {
                 // Get User object and use the values to update the UI
                 names = new ArrayList<String>();
                 distances = new ArrayList<String>();
+                buddies = new ArrayList<User>();
 
                 DataSnapshot children = dataSnapshot.child(interest);
                 if(children.hasChild(username)){
@@ -107,6 +113,7 @@ public class BuddiesActivity extends AppCompatActivity {
                     User buddy = postSnapshot.getValue(User.class);
                     if (buddy.distance(lati,longi)<3 && !buddy.getEmail().equals(memail)){
                         names.add(buddy.getUsername());
+                        buddies.add(buddy);
                         double distance = buddy.distance(lati,longi);
                         DecimalFormat df = new DecimalFormat("#.####");
                         distances.add(df.format(distance));
@@ -115,7 +122,6 @@ public class BuddiesActivity extends AppCompatActivity {
 
                 // [START_EXCLUDE]
                 // Update buddies View
-
                 mBuddyView.setAdapter(new mAdapter(names, distances));
 
                 // [END_EXCLUDE]
@@ -168,15 +174,14 @@ public class BuddiesActivity extends AppCompatActivity {
 
     class mAdapter extends BaseAdapter {
 
-        ArrayList<String> Buddy, Distance;
+        ArrayList<User> Buddy//, Distance;
         mAdapter() {
             Buddy = null;
-            Distance = null;
+            //Distance = null;
         }
 
-        public mAdapter(ArrayList<String> item1, ArrayList<String> item2) {
+        public mAdapter(ArrayList<User> item1) {
             Buddy = item1;
-            Distance = item2;
         }
 
         @Override
@@ -202,10 +207,24 @@ public class BuddiesActivity extends AppCompatActivity {
             TextView buddy, distance;
             buddy = (TextView) row.findViewById(R.id.buddy);
             distance = (TextView) row.findViewById(R.id.distance);
-            buddy.setText(Buddy.get(position));
-            distance.setText(Distance.get(position )+ "km");
+            buddy.setText(Buddy.get(position).getUsername());
+            double dist = Buddy.get(position ).distance(lati,longi);
+            DecimalFormat df = new DecimalFormat("#.####");
+            distance.setText(df.format(distance)+"km");
+            //distance.setText(Buddy.get(position ).+ "km");
             return (row);
         }
+        class CustomComparator implements Comparator<User> {
+            @Override
+            public int compare(User o1, User o2) {
+                return (int)(o1.distance(lati,longi).compareTo(o2.distance(lati,longi)));
+            }
+        }
+
+
+    }
+    public void removeUser(User user){
+        mDatabase.child(interest).child(user.getUsername()).removeValue();
     }
 
 }
