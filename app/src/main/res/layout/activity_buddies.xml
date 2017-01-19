@@ -38,6 +38,7 @@
         android:layout_alignParentRight="true"
         android:background="@color/colorYellow"
         android:layout_weight="1"
+        android:onClick="removeuser"
         android:layout_marginLeft="5dp"/>
     </LinearLayout>
 

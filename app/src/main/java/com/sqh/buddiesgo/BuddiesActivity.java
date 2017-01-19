@@ -44,6 +44,7 @@ public class BuddiesActivity extends AppCompatActivity {
     private String username;
     private ListView mBuddyView;
     private User user;
+    private boolean remove = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,15 +61,7 @@ public class BuddiesActivity extends AppCompatActivity {
             }
         });
 
-        final Button removeButton = (Button) findViewById(R.id.removeButton);
-        removeButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                removeUser(user);
-                Intent intent = new Intent(BuddiesActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
 
         // To get the information of the user
         //TextView showLocationView = (TextView) findViewById(R.id.showLocation);
@@ -113,7 +106,7 @@ public class BuddiesActivity extends AppCompatActivity {
                 DataSnapshot children = dataSnapshot.child(interest);
                 if(children.hasChild(username)){
                     mDatabase.child(interest).child(username).setValue(user);
-                }else{
+                }else if(!remove){
                     writeNewUser(user);
                 }
                 for (DataSnapshot postSnapshot: children.getChildren()) {
@@ -234,6 +227,13 @@ public class BuddiesActivity extends AppCompatActivity {
     public void removeUser(User user){
         mDatabase.child(interest).child(user.getUsername()).removeValue();
     }
+    public void removeuser(View view){
+        removeUser(user);
+        Intent intent = new Intent(BuddiesActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+        remove = true;
 
+    }
 
 }
