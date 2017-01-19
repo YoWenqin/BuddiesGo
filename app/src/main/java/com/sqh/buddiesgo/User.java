@@ -24,6 +24,7 @@ public class User {
         this.lati = lati;
         this.longi = longi;
     }
+
     public String getEmail(){
         return email;
     }
