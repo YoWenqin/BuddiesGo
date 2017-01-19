@@ -1,6 +1,7 @@
 package com.sqh.buddiesgo;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,14 +45,24 @@ public class BuddiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buddies);
 
+        // Event listener for back button, go back to home page
+        final Button backButton = (Button) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(BuddiesActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         // To get the information of the user
-        TextView showLocationView = (TextView) findViewById(R.id.showLocation);
+        //TextView showLocationView = (TextView) findViewById(R.id.showLocation);
         Bundle b = getIntent().getExtras();
         latitude = b.getDouble("latitude");
         longitude = b.getDouble("longitude");
         memail = b.getString("email");
         username = b.getString("username");
-        showLocationView.setText(Double.toString(latitude) + ", " + Double.toString(longitude));
+        //showLocationView.setText(Double.toString(latitude) + ", " + Double.toString(longitude));
 
         // Display title of interest
         changeInterestName();
