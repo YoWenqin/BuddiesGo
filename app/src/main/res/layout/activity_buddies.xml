@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_buddies"
     android:layout_width="match_parent"
@@ -11,35 +12,34 @@
     android:background="@color/colorBackground"
     tools:context="com.sqh.buddiesgo.BuddiesActivity">
 
+
     <TextView
         android:text="display interest"
         android:textColor="@color/colorPrimaryLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/displayInterest"
+        android:textSize="40dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        android:id="@+id/backButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/displayInterest" />
+
     <ListView
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/displayInterest"
         android:id="@+id/budList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <Button
-        android:text="Back"
-        android:id="@+id/backButton"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:textSize="10dp"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@color/colorRed"
-        android:textColorLink="@color/colorPrimaryLight"
-        android:layout_above="@+id/budList"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp" />
 </RelativeLayout>
