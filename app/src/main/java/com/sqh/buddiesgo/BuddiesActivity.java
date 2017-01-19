@@ -202,7 +202,7 @@ public class BuddiesActivity extends AppCompatActivity {
             TextView buddy, distance;
             buddy = (TextView) row.findViewById(R.id.buddy);
             distance = (TextView) row.findViewById(R.id.distance);
-            buddy.setText(Buddy.get(position) + "km");
+            buddy.setText(Buddy.get(position));
             distance.setText(Distance.get(position )+ "km");
             return (row);
         }
