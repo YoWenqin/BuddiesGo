@@ -1,6 +1,5 @@
 package com.sqh.buddiesgo;
 
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,19 +18,17 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import java.lang.*;
 
 public class BuddiesActivity extends AppCompatActivity {
     private static final String TAG = "BuddiesActivity";
@@ -86,7 +83,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
         //Initialize Views
         mBuddyView = (ListView) findViewById(R.id.budList);
-        mBuddyView.setAdapter(new mAdapter(names, distances));
+        mBuddyView.setAdapter(new mAdapter(buddies));
 
     }
 
@@ -122,7 +119,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
                 // [START_EXCLUDE]
                 // Update buddies View
-                mBuddyView.setAdapter(new mAdapter(names, distances));
+                mBuddyView.setAdapter(new mAdapter(buddies));
 
                 // [END_EXCLUDE]
             }
@@ -174,7 +171,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
     class mAdapter extends BaseAdapter {
 
-        ArrayList<User> Buddy//, Distance;
+        ArrayList<User> Buddy;//, Distance;
         mAdapter() {
             Buddy = null;
             //Distance = null;
@@ -207,21 +204,22 @@ public class BuddiesActivity extends AppCompatActivity {
             TextView buddy, distance;
             buddy = (TextView) row.findViewById(R.id.buddy);
             distance = (TextView) row.findViewById(R.id.distance);
+            Collections.sort(Buddy, new CustomComparator());
             buddy.setText(Buddy.get(position).getUsername());
             double dist = Buddy.get(position ).distance(lati,longi);
             DecimalFormat df = new DecimalFormat("#.####");
-            distance.setText(df.format(distance)+"km");
+            distance.setText(df.format(dist)+"km");
             //distance.setText(Buddy.get(position ).+ "km");
             return (row);
         }
         class CustomComparator implements Comparator<User> {
             @Override
             public int compare(User o1, User o2) {
-                return (int)(o1.distance(lati,longi).compareTo(o2.distance(lati,longi)));
+                if (o1.distance(lati,longi) < o2.distance(lati,longi)) return -1;
+                if (o1.distance(lati,longi) > o2.distance(lati,longi)) return 1;
+                return 0;
             }
         }
-
-
     }
     public void removeUser(User user){
         mDatabase.child(interest).child(user.getUsername()).removeValue();
