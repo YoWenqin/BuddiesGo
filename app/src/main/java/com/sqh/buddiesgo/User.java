@@ -31,13 +31,19 @@ public class User {
     public String getUsername(){
         return username;
     }
+    public double getLatitude (){return lati;}
+    public double getLongitude (){return longi;}
     public double distance(Double lat2, Double lon2){
-        Double dlon = lon2 - longi;
-        Double dlat = lat2 - lati;
-        Double a = Math.pow((Math.sin(dlat/2)),2) + Math.cos(lati) * Math.cos(lat2) * Math.pow(Math.sin(dlon/2),2);
-        Double c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a) );
-        Double d = 6371 * c;
-        return d;
+        double earthRadius = 6371; //meters
+        double dLat = Math.toRadians(lat2-lati);
+        double dLng = Math.toRadians(lon2-longi);
+        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(Math.toRadians(lati)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLng/2) * Math.sin(dLng/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        double dist = earthRadius * c;
+
+        return dist;
     }
 
 

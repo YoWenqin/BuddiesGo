@@ -29,8 +29,8 @@ public class BuddiesActivity extends AppCompatActivity {
     private static final String TAG = "BuddiesActivity";
     private DatabaseReference mDatabase;
 
-    String[] item1 = {"buddy1", "buddy2"};
-    String[] item2 = {"distance1", "distance2"};
+    ArrayList<String> names = new ArrayList<String>();
+    ArrayList<String> distances = new ArrayList<String>();
     private String interest;
     private double latitude;
     private double longitude;
@@ -63,7 +63,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
         //Initialize Views
         mBuddyView = (ListView) findViewById(R.id.budList);
-        mBuddyView.setAdapter(new mAdapter(item1, item2));
+        mBuddyView.setAdapter(new mAdapter(names, distances));
 
     }
 
@@ -79,14 +79,16 @@ public class BuddiesActivity extends AppCompatActivity {
                 DataSnapshot children = dataSnapshot.child(interest);
                 for (DataSnapshot postSnapshot: children.getChildren()) {
                     User buddy = postSnapshot.getValue(User.class);
-                    Log.d("lon",Double.toString(longitude));
-                    Log.d("user",buddy.getUsername());
-                    Log.d("distance",Double.toString(buddy.distance(longitude,latitude)));
+                    if (buddy.distance(latitude,longitude)<3 && !buddy.getEmail().equals(memail)){
+                        names.add(buddy.getUsername());
+                        distances.add(Double.toString(buddy.distance(latitude,longitude)));
+
+                    }
                 }
 
                 // [START_EXCLUDE]
                 // Update buddies View
-                //mBuddyView.setAdapter();
+                mBuddyView.setAdapter(new mAdapter(names, distances));
 
                 // [END_EXCLUDE]
             }
@@ -138,21 +140,21 @@ public class BuddiesActivity extends AppCompatActivity {
     }
 
     class mAdapter extends BaseAdapter {
-        String[] Buddy, Distance;
 
+        ArrayList<String> Buddy, Distance;
         mAdapter() {
             Buddy = null;
             Distance = null;
         }
 
-        public mAdapter(String[] item1, String[] item2) {
+        public mAdapter(ArrayList<String> item1, ArrayList<String> item2) {
             Buddy = item1;
             Distance = item2;
         }
 
         @Override
         public int getCount() {
-            return Buddy.length;
+            return Buddy.size();
         }
 
         @Override
@@ -173,8 +175,8 @@ public class BuddiesActivity extends AppCompatActivity {
             TextView buddy, distance;
             buddy = (TextView) row.findViewById(R.id.buddy);
             distance = (TextView) row.findViewById(R.id.distance);
-            buddy.setText(Buddy[position]);
-            distance.setText(Distance[position]);
+            buddy.setText(Buddy.get(position));
+            distance.setText(Distance.get(position));
             return (row);
         }
     }
