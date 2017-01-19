@@ -21,25 +21,35 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class BuddiesActivity extends AppCompatActivity {
     private static final String TAG = "BuddiesActivity";
     private DatabaseReference mDatabase;
-    private ListView mBuddyView;
-    String[] item1 = {"buddy1","buddy2"};
-    String[] item2 = {"distance1", "distance2"};
 
+    String[] item1 = {"buddy1", "buddy2"};
+    String[] item2 = {"distance1", "distance2"};
+    private String interest;
+    private double latitude;
+    private double longitude;
+    private String memail;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buddies);
 
-        // This is here to test that the GPS is working
+        // To get the information of the user
         TextView showLocationView = (TextView) findViewById(R.id.showLocation);
         Bundle b = getIntent().getExtras();
-        double latitude = b.getDouble("latitude");
-        double longitude = b.getDouble("longitude");
-        showLocationView.setText(Double.toString(latitude)+", "+Double.toString(longitude));
+        latitude = b.getDouble("latitude");
+        longitude = b.getDouble("longitude");
+        memail = b.getString("email");
+        username = b.getString("username");
+        showLocationView.setText(Double.toString(latitude) + ", " + Double.toString(longitude));
 
         // Display title of interest
         changeInterestName();
@@ -47,23 +57,31 @@ public class BuddiesActivity extends AppCompatActivity {
         // Initialize Database
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        // add user information to firebase
+        writeNewUser(username,memail,latitude,longitude);
+
         //Initialize Views
         mBuddyView = (ListView) findViewById(R.id.budList);
-        mBuddyView.setAdapter(new mAdapter(item1,item2));
+        mBuddyView.setAdapter(new mAdapter(item1, item2));
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
         // Add value event listener to the post
         // [START post_value_event_listener]
         ValueEventListener buddyListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                User buddy = dataSnapshot.getValue(User.class);
+                // Get User object and use the values to update the UI
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    User buddy = dataSnapshot.child(interest).getValue(User.class);
+                    Log.d("lon",Double.toString(longitude));
+                    Log.d("user",buddy.getUsername());
+                    Log.d("distance",Double.toString(buddy.distance(longitude,latitude)));
+                }
+
                 // [START_EXCLUDE]
                 // Update buddies View
                 //mBuddyView.setAdapter();
@@ -86,20 +104,22 @@ public class BuddiesActivity extends AppCompatActivity {
 
     }
 
-    private void writeNewUser(String userId, String name, String email, Double lati, Double longi) {
-        User user = new User(name, email,lati,longi);
-        mDatabase.child("users").child(userId).setValue(user);
+    private void writeNewUser( String name, String email, Double lati, Double longi) {
+        User user = new User(name, email, lati, longi);
+        String key = mDatabase.child(interest).push().getKey();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/" + interest + "/" + key, user);
+        mDatabase.updateChildren(childUpdates);
     }
 
     /**
      * Change title of page according to interest
      */
-    private void changeInterestName(){
+    private void changeInterestName() {
         TextView displaysInterestView = (TextView) findViewById(R.id.displayInterest);
 
         Bundle b = getIntent().getExtras();
-        String interest = "";
-        if(b != null) {
+        if (b != null) {
             interest = b.getString("interest");
             switch (interest) {
                 case "Food":
@@ -117,8 +137,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
     class mAdapter extends BaseAdapter {
         String[] Buddy, Distance;
-
-        mAdapter(){
+        mAdapter() {
             Buddy = null;
             Distance = null;
         }
