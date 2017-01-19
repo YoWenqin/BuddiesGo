@@ -8,7 +8,10 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -23,28 +26,35 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
-public class BuddiesActivity extends AppCompatActivity
-        implements LoaderManager.LoaderCallbacks<Cursor>{
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class BuddiesActivity extends AppCompatActivity {
     private static final String TAG = "BuddiesActivity";
     private DatabaseReference mDatabase;
     private ListView mBuddyView;
-
-    public String[] buddy = {"hello"};
-    public String distance="1";
-
-    SimpleCursorAdapter mAdapter;
+    String[] item1 = {"buddy1", "buddy2"};
+    String[] item2 = {"distance1", "distance2"};
+    private String interest;
+    private double latitude;
+    private double longitude;
+    private String memail;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buddies);
 
-        // This is here to test that the GPS is working
+        // To get the information of the user
         TextView showLocationView = (TextView) findViewById(R.id.showLocation);
         Bundle b = getIntent().getExtras();
-        double latitude = b.getDouble("latitude");
-        double longitude = b.getDouble("longitude");
-        showLocationView.setText(Double.toString(latitude)+", "+Double.toString(longitude));
+        latitude = b.getDouble("latitude");
+        longitude = b.getDouble("longitude");
+        memail = b.getString("email");
+        username = b.getString("username");
+        showLocationView.setText(Double.toString(latitude) + ", " + Double.toString(longitude));
 
         // Display title of interest
         changeInterestName();
@@ -52,38 +62,34 @@ public class BuddiesActivity extends AppCompatActivity
         // Initialize Database
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        // add user information to firebase
+        writeNewUser(username,memail,latitude,longitude);
 
         //Initialize Views
         mBuddyView = (ListView) findViewById(R.id.budList);
+        mBuddyView.setAdapter(new mAdapter(item1, item2));
 
-        // For the cursor adapter, specify which columns go into which views
-        String[] fromColumns ={ContactsContract.Data.DISPLAY_NAME};
-        int[] toViews = {android.R.id.text1}; //The TextView in simple_list_item_1
-
-        //Create an empty adapter we will use to display the loaded data.
-        //We pass null for the cursor, then update it in onLoadFinished()
-        mAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, null, fromColumns,toViews,0);
-        mBuddyView.setAdapter(mAdapter);
-
-        // Prepare the loader.  Either re-connect with an existing one,
-        // or start a new one.
-        getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
         // Add value event listener to the post
         // [START post_value_event_listener]
         ValueEventListener buddyListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                User buddy = dataSnapshot.getValue(User.class);
+                // Get User object and use the values to update the UI
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    User buddy = dataSnapshot.child(interest).getValue(User.class);
+                    Log.d("lon",Double.toString(longitude));
+                    Log.d("user",buddy.getUsername());
+                    Log.d("distance",Double.toString(buddy.distance(longitude,latitude)));
+                }
+
                 // [START_EXCLUDE]
                 // Update buddies View
-                mBuddyView.setAdapter(mAdapter);
+                //mBuddyView.setAdapter();
 
                 // [END_EXCLUDE]
             }
@@ -103,20 +109,22 @@ public class BuddiesActivity extends AppCompatActivity
 
     }
 
-    private void writeNewUser(String userId, String name, String email, Double lati, Double longi) {
-        User user = new User(name, email,lati,longi);
-        mDatabase.child("users").child(userId).setValue(user);
+    private void writeNewUser( String name, String email, Double lati, Double longi) {
+        User user = new User(name, email, lati, longi);
+        String key = mDatabase.child(interest).push().getKey();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/" + interest + "/" + key, user);
+        mDatabase.updateChildren(childUpdates);
     }
 
     /**
      * Change title of page according to interest
      */
-    private void changeInterestName(){
+    private void changeInterestName() {
         TextView displaysInterestView = (TextView) findViewById(R.id.displayInterest);
 
         Bundle b = getIntent().getExtras();
-        String interest = "";
-        if(b != null) {
+        if (b != null) {
             interest = b.getString("interest");
             switch (interest) {
                 case "Food":
@@ -132,26 +140,44 @@ public class BuddiesActivity extends AppCompatActivity
         }
     }
 
-    // Called when a new Loader needs to be created
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        // Now create and return a CursorLoader that will take care of
-        // creating a Cursor for the data being displayed.
-        return new CursorLoader(this, ContactsContract.Data.CONTENT_URI,
-                buddy, distance, null, null);
-    }
+    class mAdapter extends BaseAdapter {
+        String[] Buddy, Distance;
+        mAdapter() {
+            Buddy = null;
+            Distance = null;
+        }
 
-    // Called when a previously created loader has finished loading
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        // Swap the new cursor in.  (The framework will take care of closing the
-        // old cursor once we return.)
-        mAdapter.swapCursor(data);
-    }
+        public mAdapter(String[] item1, String[] item2) {
+            Buddy = item1;
+            Distance = item2;
+        }
 
-    // Called when a previously created loader is reset, making the data unavailable
-    public void onLoaderReset(Loader<Cursor> loader) {
-        // This is called when the last Cursor provided to onLoadFinished()
-        // above is about to be closed.  We need to make sure we are no
-        // longer using it.
-        mAdapter.swapCursor(null);
+        @Override
+        public int getCount() {
+            return Buddy.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = getLayoutInflater();
+            View row;
+            row = inflater.inflate(R.layout.row, parent, false);
+            TextView buddy, distance;
+            buddy = (TextView) row.findViewById(R.id.buddy);
+            distance = (TextView) row.findViewById(R.id.distance);
+            buddy.setText(Buddy[position]);
+            distance.setText(Distance[position]);
+            return (row);
+        }
     }
 }
