@@ -66,7 +66,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
 
         user = new User(username,memail,lati,longi);
-        showLocationView.setText(Double.toString(lati) + ", " + Double.toString(longi));
+        //showLocationView.setText(Double.toString(lati) + ", " + Double.toString(longi));
         //showLocationView.setText(Double.toString(latitude) + ", " + Double.toString(longitude));
 
         // Display title of interest
@@ -201,8 +201,8 @@ public class BuddiesActivity extends AppCompatActivity {
             TextView buddy, distance;
             buddy = (TextView) row.findViewById(R.id.buddy);
             distance = (TextView) row.findViewById(R.id.distance);
-            buddy.setText(Buddy.get(position));
-            distance.setText(Distance.get(position));
+            buddy.setText(Buddy.get(position) + "km");
+            distance.setText(Distance.get(position )+ "km");
             return (row);
         }
     }
