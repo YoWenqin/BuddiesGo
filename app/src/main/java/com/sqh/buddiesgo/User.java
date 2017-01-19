@@ -24,6 +24,20 @@ public class User {
         this.lati = lati;
         this.longi = longi;
     }
+    public String getEmail(){
+        return email;
+    }
+    public String getUsername(){
+        return username;
+    }
+    public double distance(Double lat2, Double lon2){
+        Double dlon = lon2 - longi;
+        Double dlat = lat2 - lati;
+        Double a = Math.pow((Math.sin(dlat/2)),2) + Math.cos(lati) * Math.cos(lat2) * Math.pow(Math.sin(dlon/2),2);
+        Double c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a) );
+        Double d = 6371 * c;
+        return d;
+    }
 
 
 }

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String mUsername;
     private String mPhotoUrl;
+    private String mEmail;
     public static final String ANONYMOUS = "anonymous";
 
     @Override
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         } else {
             mUsername = mFirebaseUser.getDisplayName();
+            mEmail = mFirebaseUser.getEmail();
             if (mFirebaseUser.getPhotoUrl() != null) {
                 mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
             }
@@ -87,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
             location[0] = latitude;
             double longitude = gps.getLongitude();
             location[1] = longitude;
-            Log.d("lat",Double.toString(latitude));
-            Log.d("longi",Double.toString(longitude));
         } else {
             gps.showSettingsAlert();
         }
@@ -117,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
     private void newAct(String interest, double[] location){
         Intent intent = new Intent(MainActivity.this, BuddiesActivity.class);
         Bundle b = new Bundle();
+        b.putString("username",mUsername);
+        b.putString("email",mEmail);
         b.putString("interest", interest);
         b.putDouble("latitude", location[0]);
         b.putDouble("longitude", location[1]);
