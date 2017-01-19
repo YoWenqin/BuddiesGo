@@ -12,31 +12,34 @@
     tools:context="com.sqh.buddiesgo.BuddiesActivity">
 
     <TextView
-        android:text="put location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/showLocation"
-        android:textColor="@color/colorPrimaryLight"
-        android:contentDescription="Location"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
-
-    <ListView
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/showLocation"
-        android:id="@+id/budList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <TextView
         android:text="display interest"
         android:textColor="@color/colorPrimaryLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/displayInterest"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/displayInterest" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/displayInterest"
+        android:id="@+id/budList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:text="Back"
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:textSize="10dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:background="@color/colorRed"
+        android:textColorLink="@color/colorPrimaryLight"
+        android:layout_above="@+id/budList"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>
