@@ -145,16 +145,5 @@ public class SignInActivity extends AppCompatActivity implements
                 });
     }
 
-    /*
-    private void signOut() {
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(Status status) {
-                        // ...
-                    }
-                });
-    }
-    */
 
 }
