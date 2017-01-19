@@ -18,11 +18,12 @@ public class User {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String username, String email,Double lati, Double longi) {
+    public User(String username, String email, Double lati, Double longi) {
         this.username = username;
         this.email = email;
         this.lati = lati;
         this.longi = longi;
     }
+
 
 }
