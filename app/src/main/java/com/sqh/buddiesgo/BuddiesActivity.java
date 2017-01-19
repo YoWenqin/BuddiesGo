@@ -76,8 +76,9 @@ public class BuddiesActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get User object and use the values to update the UI
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    User buddy = dataSnapshot.child(interest).getValue(User.class);
+                DataSnapshot children = dataSnapshot.child(interest);
+                for (DataSnapshot postSnapshot: children.getChildren()) {
+                    User buddy = postSnapshot.getValue(User.class);
                     Log.d("lon",Double.toString(longitude));
                     Log.d("user",buddy.getUsername());
                     Log.d("distance",Double.toString(buddy.distance(longitude,latitude)));
