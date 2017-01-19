@@ -48,7 +48,7 @@ public class BuddiesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_buddies);
 
         // Event listener for back button, go back to home page
-        final ImageButton backButton = (ImageButton) findViewById(R.id.backButton);
+        final Button backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(BuddiesActivity.this, MainActivity.class);
@@ -67,7 +67,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
 
         user = new User(username,memail,lati,longi);
-        showLocationView.setText(Double.toString(lati) + ", " + Double.toString(longi));
+        //showLocationView.setText(Double.toString(lati) + ", " + Double.toString(longi));
         //showLocationView.setText(Double.toString(latitude) + ", " + Double.toString(longitude));
 
         // Display title of interest
