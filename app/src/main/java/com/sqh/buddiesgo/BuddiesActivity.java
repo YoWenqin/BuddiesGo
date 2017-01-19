@@ -227,4 +227,5 @@ public class BuddiesActivity extends AppCompatActivity {
         mDatabase.child(interest).child(user.getUsername()).removeValue();
     }
 
+
 }
