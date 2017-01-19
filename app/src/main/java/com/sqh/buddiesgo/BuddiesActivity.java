@@ -1,17 +1,15 @@
 package com.sqh.buddiesgo;
 
-import android.app.LoaderManager;
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.provider.ContactsContract;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,16 +21,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
-public class BuddiesActivity extends AppCompatActivity
-        implements LoaderManager.LoaderCallbacks<Cursor>{
+public class BuddiesActivity extends AppCompatActivity {
     private static final String TAG = "BuddiesActivity";
     private DatabaseReference mDatabase;
     private ListView mBuddyView;
+    String[] item1 = {"buddy1","buddy2"};
+    String[] item2 = {"distance1", "distance2"};
 
-    public String[] buddy = {"hello"};
-    public String distance="1";
-
-    SimpleCursorAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,22 +47,10 @@ public class BuddiesActivity extends AppCompatActivity
         // Initialize Database
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-
         //Initialize Views
         mBuddyView = (ListView) findViewById(R.id.budList);
+        mBuddyView.setAdapter(new mAdapter(item1,item2));
 
-        // For the cursor adapter, specify which columns go into which views
-        String[] fromColumns ={ContactsContract.Data.DISPLAY_NAME};
-        int[] toViews = {android.R.id.text1}; //The TextView in simple_list_item_1
-
-        //Create an empty adapter we will use to display the loaded data.
-        //We pass null for the cursor, then update it in onLoadFinished()
-        mAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, null, fromColumns,toViews,0);
-        mBuddyView.setAdapter(mAdapter);
-
-        // Prepare the loader.  Either re-connect with an existing one,
-        // or start a new one.
-        getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
@@ -83,7 +66,7 @@ public class BuddiesActivity extends AppCompatActivity
                 User buddy = dataSnapshot.getValue(User.class);
                 // [START_EXCLUDE]
                 // Update buddies View
-                mBuddyView.setAdapter(mAdapter);
+                //mBuddyView.setAdapter();
 
                 // [END_EXCLUDE]
             }
@@ -132,26 +115,46 @@ public class BuddiesActivity extends AppCompatActivity
         }
     }
 
-    // Called when a new Loader needs to be created
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        // Now create and return a CursorLoader that will take care of
-        // creating a Cursor for the data being displayed.
-        return new CursorLoader(this, ContactsContract.Data.CONTENT_URI,
-                buddy, distance, null, null);
+    class mAdapter extends BaseAdapter {
+        String[] Buddy, Distance;
+
+        mAdapter(){
+            Buddy = null;
+            Distance = null;
+        }
+
+        public mAdapter(String[] item1, String[] item2) {
+            Buddy = item1;
+            Distance = item2;
+        }
+
+        @Override
+        public int getCount() {
+            return Buddy.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = getLayoutInflater();
+            View row;
+            row = inflater.inflate(R.layout.row, parent, false);
+            TextView buddy, distance;
+            buddy = (TextView) row.findViewById(R.id.buddy);
+            distance = (TextView) row.findViewById(R.id.distance);
+            buddy.setText(Buddy[position]);
+            distance.setText(Distance[position]);
+            return (row);
+        }
     }
 
-    // Called when a previously created loader has finished loading
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        // Swap the new cursor in.  (The framework will take care of closing the
-        // old cursor once we return.)
-        mAdapter.swapCursor(data);
-    }
-
-    // Called when a previously created loader is reset, making the data unavailable
-    public void onLoaderReset(Loader<Cursor> loader) {
-        // This is called when the last Cursor provided to onLoadFinished()
-        // above is about to be closed.  We need to make sure we are no
-        // longer using it.
-        mAdapter.swapCursor(null);
-    }
 }
