@@ -13,6 +13,7 @@ public class User {
     private String email;
     private Double lati;
     private Double longi;
+    private long time;
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -23,6 +24,7 @@ public class User {
         this.email = email;
         this.lati = lati;
         this.longi = longi;
+
     }
 
     public String getEmail(){
