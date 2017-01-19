@@ -36,6 +36,7 @@ public class BuddiesActivity extends AppCompatActivity {
     private double longitude;
     private String memail;
     private String username;
+    private ListView mBuddyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
