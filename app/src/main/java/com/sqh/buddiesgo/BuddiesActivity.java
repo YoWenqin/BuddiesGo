@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,7 +67,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
 
         user = new User(username,memail,lati,longi);
-        showLocationView.setText(Double.toString(lati) + ", " + Double.toString(longi));
+        //showLocationView.setText(Double.toString(lati) + ", " + Double.toString(longi));
         //showLocationView.setText(Double.toString(latitude) + ", " + Double.toString(longitude));
 
         // Display title of interest
