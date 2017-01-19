@@ -60,6 +60,16 @@ public class BuddiesActivity extends AppCompatActivity {
             }
         });
 
+        final Button removeButton = (Button) findViewById(R.id.removeButton);
+        removeButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                removeUser(user);
+                Intent intent = new Intent(BuddiesActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         // To get the information of the user
         //TextView showLocationView = (TextView) findViewById(R.id.showLocation);
         Bundle b = getIntent().getExtras();
