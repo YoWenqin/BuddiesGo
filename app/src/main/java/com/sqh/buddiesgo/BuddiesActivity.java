@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -76,12 +77,17 @@ public class BuddiesActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get User object and use the values to update the UI
+                names = new ArrayList<String>();
+                distances = new ArrayList<String>();
+
                 DataSnapshot children = dataSnapshot.child(interest);
                 for (DataSnapshot postSnapshot: children.getChildren()) {
                     User buddy = postSnapshot.getValue(User.class);
                     if (buddy.distance(latitude,longitude)<3 && !buddy.getEmail().equals(memail)){
                         names.add(buddy.getUsername());
-                        distances.add(Double.toString(buddy.distance(latitude,longitude)));
+                        double distance = buddy.distance(latitude,longitude);
+                        DecimalFormat df = new DecimalFormat("#.####");
+                        distances.add(df.format(distance));
 
                     }
                 }
