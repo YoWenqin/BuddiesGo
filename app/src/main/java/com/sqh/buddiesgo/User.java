@@ -9,10 +9,10 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class User {
 
-    public String username;
-    public String email;
-    public Double lati;
-    public Double longi;
+    private String username;
+    private String email;
+    private Double lati;
+    private Double longi;
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -31,8 +31,8 @@ public class User {
     public String getUsername(){
         return username;
     }
-    public double getLatitude (){return lati;}
-    public double getLongitude (){return longi;}
+    public double getLati (){return lati;}
+    public double getLongi (){return longi;}
     public double distance(Double lat2, Double lon2){
         double earthRadius = 6371; //meters
         double dLat = Math.toRadians(lat2-lati);
