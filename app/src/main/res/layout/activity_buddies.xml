@@ -38,5 +38,14 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/displayInterest" />
 
+    <Button
+        android:text="Back"
+        android:id="@+id/backButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>

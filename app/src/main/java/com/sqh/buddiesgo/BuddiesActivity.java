@@ -139,6 +139,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
     class mAdapter extends BaseAdapter {
         String[] Buddy, Distance;
+
         mAdapter() {
             Buddy = null;
             Distance = null;
