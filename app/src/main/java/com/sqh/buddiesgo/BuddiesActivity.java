@@ -1,10 +1,6 @@
 package com.sqh.buddiesgo;
 
-import android.app.LoaderManager;
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.provider.ContactsContract;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +28,7 @@ import java.util.Map;
 public class BuddiesActivity extends AppCompatActivity {
     private static final String TAG = "BuddiesActivity";
     private DatabaseReference mDatabase;
-    private ListView mBuddyView;
+
     String[] item1 = {"buddy1", "buddy2"};
     String[] item2 = {"distance1", "distance2"};
     private String interest;
@@ -180,4 +175,5 @@ public class BuddiesActivity extends AppCompatActivity {
             return (row);
         }
     }
+
 }
