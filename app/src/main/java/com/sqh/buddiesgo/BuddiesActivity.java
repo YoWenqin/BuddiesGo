@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -58,12 +59,9 @@ public class BuddiesActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
         // To get the information of the user
         //TextView showLocationView = (TextView) findViewById(R.id.showLocation);
-        Bundle b = getIntent().getExtras();
+        final Bundle b = getIntent().getExtras();
         lati = b.getDouble("latitude");
         longi = b.getDouble("longitude");
         memail = b.getString("email");
@@ -85,6 +83,17 @@ public class BuddiesActivity extends AppCompatActivity {
         //Initialize Views
         mBuddyView = (ListView) findViewById(R.id.budList);
         mBuddyView.setAdapter(new mAdapter(buddies));
+        mBuddyView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                User chosenUser= (User) parent.getAdapter().getItem(position);
+                Intent intent = new Intent(BuddiesActivity.this, Information.class);
+                b.putString("buddyname",chosenUser.getUsername());
+                b.putString("buddyemail",chosenUser.getEmail());
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -182,7 +191,7 @@ public class BuddiesActivity extends AppCompatActivity {
 
         @Override
         public Object getItem(int position) {
-            return null;
+            return Buddy.get(position);
         }
 
         @Override
