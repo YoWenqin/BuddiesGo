@@ -34,8 +34,6 @@ public class BuddiesActivity extends AppCompatActivity {
     private static final String TAG = "BuddiesActivity";
     private DatabaseReference mDatabase;
 
-    ArrayList<String> names = new ArrayList<String>();
-    ArrayList<String> distances = new ArrayList<String>();
     ArrayList<User> buddies = new ArrayList<User>();
     private String interest;
     private double lati;
@@ -99,8 +97,6 @@ public class BuddiesActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get User object and use the values to update the UI
-                names = new ArrayList<String>();
-                distances = new ArrayList<String>();
                 buddies = new ArrayList<User>();
 
                 DataSnapshot children = dataSnapshot.child(interest);
@@ -112,14 +108,9 @@ public class BuddiesActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot: children.getChildren()) {
                     User buddy = postSnapshot.getValue(User.class);
                     if (buddy.distance(lati,longi)<3 && !buddy.getEmail().equals(memail)){
-                        names.add(buddy.getUsername());
                         buddies.add(buddy);
-                        double distance = buddy.distance(lati,longi);
-                        DecimalFormat df = new DecimalFormat("#.####");
-                        distances.add(df.format(distance));
                     }
                 }
-
                 // [START_EXCLUDE]
                 // Update buddies View
                 mBuddyView.setAdapter(new mAdapter(buddies));
