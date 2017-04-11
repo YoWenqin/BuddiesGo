@@ -1,3 +1,2 @@
 # BuddiesGo
-Final project of Jterm class
-hello
+An Android App that helps users to find buddies nearby.
